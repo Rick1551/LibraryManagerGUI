@@ -7,9 +7,9 @@
 class Book : public QObject
 {
     Q_OBJECT
-    //Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleCHanged)
-    //Q_PROPERTY(QString Author READ Author WRITE setAuthor NOTIFY AuthorChanged)
-    //Q_PROPERTY(QString isbn READ isbn WRITE setIsbn NOTIFY isbnChanged)
+    Q_PROPERTY(QString title READ getTitle WRITE setTitle NOTIFY titleChanged)
+    Q_PROPERTY(QString Author READ getAuthor WRITE setAuthor NOTIFY authorChanged)
+    Q_PROPERTY(QString isbn READ getIsbn WRITE setIsbn NOTIFY isbnChanged)
 
     QString m_title;
     QString m_author;
