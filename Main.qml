@@ -8,6 +8,7 @@ ApplicationWindow {
     height: 1080
     title: "Gestor de Biblioteca"
     property bool mostrarLista: false
+    property string resultadoDialogText: ""
 
     Column {
         anchors.centerIn: parent
@@ -36,8 +37,14 @@ ApplicationWindow {
             text: "Agregar libro"
             width: parent.width * 0.5
             onClicked: {
-                LibraryManager.addBook(titleField.text, authorField.text, 2023, isbnField.text)
-                console.log("Libros actuales:", LibraryManager.listBooks())
+                var exito = LibraryManager.addBook(titleField.text, authorField.text, 2023, isbnField.text)
+                console.log(exito)
+                if (exito) {
+                    resultadoDialogText = "Libro agregado correctamente."
+                } else {
+                    resultadoDialogText = "El libro ya existe en la biblioteca."
+                }
+                resultadoDialog.open()
                 titleField.text = ""
                 authorField.text = ""
                 isbnField.text = ""
@@ -59,6 +66,22 @@ ApplicationWindow {
             text: "Mostrar libros"
             onClicked: mostrarLista = !mostrarLista
         }
+
+        Dialog {
+            id: resultadoDialog
+            title: "Resultado"
+            width: parent.width * 0.5
+            modal: true
+            standardButtons: Dialog.Ok
+            onAccepted: resultadoDialog.close()
+            contentItem: Label {
+                text: resultadoDialogText
+                wrapMode: Text.WordWrap
+            }
+        }
+
+
+
     }
 
 }
