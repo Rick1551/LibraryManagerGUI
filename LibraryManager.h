@@ -6,11 +6,11 @@
 #include <QStringList>
 #include "Book.h"
 
-class LibraryManager : public QWidget
+class LibraryManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit LibraryManager(QWidget *parent = nullptr);
+    explicit LibraryManager(QObject *parent = nullptr);
 
     Q_INVOKABLE bool addBook(const QString& title, const QString& author, int year, const QString& isbn);
     Q_INVOKABLE QStringList listBooks() const;

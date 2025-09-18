@@ -1,7 +1,11 @@
 #include "LibraryManager.h"
 
-LibraryManager::LibraryManager(QWidget *parent)
-    : QWidget{parent} {}
+LibraryManager::LibraryManager(QObject *parent)
+    : QObject{parent}
+{
+    addBook("Cien años de soledad", "Gabriel García Márquez", 1967, "978-0307474728");
+    addBook("El Principito", "Antoine de Saint-Exupéry", 1943, "978-0156013987");
+}
 
 bool LibraryManager::addBook(const QString& title, const QString& author, int year, const QString& isbn) {
     //Verificar si ya existe un libro con mismo titulo y autor
