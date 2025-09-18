@@ -29,26 +29,26 @@ ApplicationWindow {
             placeholderText: "ISBN"
             width: parent.width * 0.9
         }
-    }
 
-    Button {
-        text: "Agregar libro"
-        width: parent.width * 0.5
-        onClicked: {
-            libraryManager.addBook(titleField.text, authorField.text, 2023, isbnField.text)
-            titleField.text = ""
-            authorField.text = ""
-            isbnField.text = ""
+        Button {
+            text: "Agregar libro"
+            width: parent.width * 0.5
+            onClicked: {
+                LibraryManager.addBook(titleField.text, authorField.text, 2023, isbnField.text)
+                titleField.text = ""
+                authorField.text = ""
+                isbnField.text = ""
+            }
         }
-    }
 
-    ListView {
-        width: parent.width * 0.9
-        height: 300
-        model: libraryManager.listBooks()
-        delegate: Text {
-            text: modelData
-            font.pixelSize: 16
+        ListView {
+            width: parent.width * 0.9
+            height: 300
+            model: LibraryManager.listBooks()
+            delegate: Text {
+                text: modelData
+                font.pixelSize: 16
+            }
         }
     }
 

@@ -8,6 +8,7 @@ find_package(Qt6 REQUIRED COMPONENTS Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -23,6 +24,7 @@ qt_add_qml_module(appLibraryManagerGUI
         SOURCES Book.h Book.cpp
         SOURCES Borrow.h Borrow.cpp
         SOURCES Users.h Users.cpp
+        SOURCES LibraryManager.h LibraryManager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -42,6 +44,7 @@ target_link_libraries(appLibraryManagerGUI
 target_link_libraries(appLibraryManagerGUI PRIVATE Qt6::Core)
 target_link_libraries(appLibraryManagerGUI PRIVATE Qt6::Core)
 target_link_libraries(appLibraryManagerGUI PRIVATE Qt6::Core)
+target_link_libraries(appLibraryManagerGUI PRIVATE Qt6::Widgets)
 
 include(GNUInstallDirs)
 install(TARGETS appLibraryManagerGUI
